@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+:root {
+    /**
+-    * Color variables
+  ==================== */
+    @each $color, $value in $colors {
+        --clr-#{$color}: #{$value};
+    }
+
+    /**
+-    * Font size variables
+  ==================== */
+
+    @each $size, $value in $font-sizes {
+        --fs-#{$size}: #{$value};
+    }
+
+    /**
+-    * Font variables
+  ==================== */
+
+    @each $font, $value in $font-families {
+        --ff-#{$font}: #{$value};
+    }
+}
+
+html {
+    font-size: var(--fs-md);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+    background-color: var(--clr-bg-gray);
+    color: var(--clr-main-black);
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: never;
+
+    &:has(.nav-wrapper.open) {
+        overflow: hidden;
+    }
+}
+
+a {
+    text-decoration: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+
+    &:focus-visible {
+        outline: 5px auto -webkit-focus-ring-color;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+.anchor {
+    padding-top: vw(108, "pc");
+    margin-top: vw(-108, "pc");
+
+    @include mq(md, max) {
+        padding-top: vw(68, "tb");
+        margin-top: vw(68, "tb");
+    }
+
+    &.-group {
+        position: absolute;
+
+        @include mq(md, max) {
+            padding-top: vw(63, "tb");
+            margin-top: vw(-63, "tb");
+        }
+    }
+
+    &.-position-absolute {
+        position: absolute;
+    }
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+// * {
+//     transition-property: background-color, color, opacity, width, transform, border-color, max-height, bottom, left, fill !important;
+
+//     &:hover,
+//     &::before,
+//     &::after,
+//     &:hover::before,
+//     &:hover::after {
+//         transition-property: background-color, color, opacity, width, transform, border-color, max-height, bottom, left, fill !important;
+//     }
+
+//     * {
+//         transition-property: background-color, color, opacity, width, transform, border-color, max-height, bottom, left, fill !important;
+
+//         &:hover,
+//         &::before,
+//         &::after,
+//         &:hover::before,
+//         &:hover::after {
+//             transition-property: background-color, color, opacity, width, transform, border-color, max-height, bottom, left, fill !important;
+//         }
+//     }
+// }
+
+.grecaptcha-badge {
+    z-index: 1;
+}
+
+.wrapper {
+    height: auto;
+    position: relative;
+    padding-top: vw(117, "pc");
+
+    display: flex;
+    flex-direction: column;
+
+    @include mq(md, min) {
+        min-height: 100vh;
+    }
+
+    @include mq(md, max) {
+        padding-top: vw(64, "tb");
+    }
+
+    &.-magazine,
+    &.-page-404,
+    &.-contact {
+        @include mq(md, min) {
+            min-height: 55vh;
+        }
+    }
+
+    &.-magazine-detail {
+        background-color: var(--clr-main-white);
+    }
+}
+
+.only-pc {
+    display: flex;
+
+    @include mq(md, max) {
+        display: none;
+    }
+}
+
+.only-sp {
+    display: none;
+
+    @include mq(md, max) {
+        display: block;
+    }
+}
+
+.container {
+    // background-color: lightgreen;
+    width: 100%;
+    max-width: 100%;
+    padding: vw(80, "pc") vw(120, "pc");
+
+    @include mq(md, max) {
+        padding: vw(40, "tb") vw(20, "tb");
+    }
+
+    &.-mv {
+        padding: vw(0, "pc") vw(120, "pc");
+
+        @include mq(md, max) {
+            padding: vw(0, "tb") vw(20, "tb");
+        }
+    }
+
+    &.-black {
+        background-color: var(--clr-main-black);
+        color: var(--clr-main-white);
+    }
+
+    &.-white {
+        background-color: var(--clr-main-white);
+    }
+
+    &.-magazine {
+        padding-top: vw(24, "pc");
+
+        @include mq(md, max) {
+            padding-top: 0;
+        }
+    }
+}
+
+select.is-empty {
+    color: var(--clr-disabled-gray) !important;
+}

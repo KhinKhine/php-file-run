@@ -1,0 +1,291 @@
+.header {
+    padding: vw(32, "pc") vw(40, "pc");
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    height: vw(100, "pc");
+    margin: vw(32, "pc") vw(40, "pc");
+
+    @include mq(md, max) {
+        padding: vw(20, "tb");
+    }
+
+    &.js-header {
+        background-color: transparent;
+        transition: background-color 0.4s;
+
+        &.-scrolled {
+            background-color: var(--clr-main-white);
+        }
+    }
+
+    &:has(.nav-wrapper.open) {
+        background-color: var(--clr-main-white) !important;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        position: relative;
+    }
+
+    &__logo {
+        max-width: vw(192, "pc");
+        transition: opacity 0.4s;
+
+        @include mq(md, max) {
+            max-width: vw(96.1, "tb");
+        }
+
+        &:hover {
+            opacity: 0.6;
+
+            @include mq(md, max) {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__menus {
+        display: flex;
+        align-items: center;
+        gap: vw(40, "pc");
+
+        @include mq(md, max) {
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        &.-pc {
+            display: flex;
+
+            @include mq(md, max) {
+                display: none;
+            }
+        }
+    }
+
+    &__menus-upper {
+        display: flex;
+        align-items: center;
+        gap: vw(40, "pc");
+
+        color: var(--clr-main-black);
+
+        font-size: vw(16, "pc");
+        font-weight: 700;
+        line-height: 180%;
+        overflow: hidden;
+
+        @include mq(md, max) {
+            gap: 0;
+            font-size: 15px;
+            flex-direction: column;
+            width: 100%;
+
+            a.-sp {
+                width: 100%;
+                padding: 15px 0px 15px 40px;
+                border-bottom: 1px solid var(--clr-bg-gray-2);
+                height: auto;
+            }
+        }
+    }
+
+    &__menus-lower {
+        display: flex;
+        align-items: center;
+        gap: vw(12, "pc");
+
+        color: var(--clr-main-black);
+
+        font-size: vw(16, "pc");
+        font-weight: 700;
+        line-height: 180%;
+        overflow: hidden;
+        position: relative;
+
+        @include mq(md, max) {
+            flex-direction: column;
+            gap: 16px;
+            font-size: 15px;
+            width: 100%;
+
+            padding: 0px 20px 24px;
+
+            a.-sp {
+                width: 100%;
+                padding: 12px 40px;
+                text-align: center;
+                height: auto;
+            }
+        }
+    }
+    &__menus-btn {
+        &.-white {
+            width: vw(200, "pc");
+            height: vw(53, "pc");
+        }
+        &.-black {
+            width: vw(208, "pc");
+            height: vw(53, "pc");
+        }
+    }
+
+    &__txt-link {
+        overflow: hidden;
+        position: relative;
+        transform: translate(0);
+        display: flex;
+        align-items: center;
+
+        span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            transition: all 0.4s;
+            text-align: center;
+
+            transition: transform 0.4s;
+        }
+        span:nth-child(1) {
+            transform: translateY(135%);
+        }
+        span:nth-child(2) {
+            transform: translateY(-10%);
+        }
+        &:hover span:nth-child(1) {
+            transform: translateY(-10%);
+        }
+        &:hover span:nth-child(2) {
+            transform: translateY(-135%);
+        }
+    }
+}
+
+/* 
+hamburger(ハンバーガーアイコン)
+=================================== */
+
+.nav-wrapper {
+    display: none;
+    align-items: center;
+
+    width: vw(18, "tb");
+    height: vw(18, "tb");
+
+    @include mq(md, max) {
+        display: flex;
+    }
+
+    /*ハンバーガーがクリックされたら*/
+    &.open {
+        .hamburger__line--1 {
+            transform: rotate(-45deg);
+            // top: 11px;
+            top: vw(11, "tb");
+        }
+
+        .hamburger__line--2 {
+            opacity: 0;
+        }
+
+        .hamburger__line--3 {
+            transform: rotate(45deg);
+            // top: 11px;
+            top: vw(11, "tb");
+        }
+
+        /*ハンバーガーがクリックされたら上からスライド*/
+        .nav-sp-inner {
+            height: 286px;
+        }
+
+        /*ハンバーガーメニューが開いたら表示*/
+        .black-bg {
+            opacity: 0.6;
+            visibility: visible;
+        }
+    }
+
+    /* 
+  nav-sp-inner(ナビ)
+  =================================== */
+    .nav-sp-inner {
+        position: fixed;
+        top: vw(64, "tb");
+        left: 0;
+        width: 100%; /* 出てくるスライドメニューの幅 */
+
+        height: 0;
+        background-color: var(--clr-main-white);
+        transition: all 0.4s;
+        z-index: 200;
+        overflow-y: auto;
+    }
+
+    /* 
+  black-bg(ハンバーガーメニュー解除用bg)
+  =================================== */
+    .black-bg {
+        position: fixed;
+        left: 0;
+        top: vw(64, "tb");
+        width: 100vw;
+        height: 100vh;
+        z-index: 5;
+        background-color: #000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s;
+        cursor: pointer;
+        z-index: 100;
+    }
+}
+
+.hamburger {
+    position: relative;
+    right: 0px;
+    top: 0px;
+
+    width: vw(18, "tb");
+    height: vw(18, "tb");
+
+    cursor: pointer;
+    z-index: 300;
+
+    display: flex;
+    flex-direction: column;
+    gap: vw(5, "tb");
+
+    &__line {
+        position: absolute;
+
+        right: 0;
+        background-color: var(--clr-main-black);
+        transition: all 0.4s;
+
+        width: 100%;
+        height: 2px;
+        align-self: stretch;
+        border-radius: vw(999, "tb");
+    }
+
+    &__line--1 {
+        top: 0px;
+    }
+
+    &__line--2 {
+        // top: 6px;
+        top: vw(6, "tb");
+    }
+
+    &__line--3 {
+        // top: 12px;
+        top: vw(12, "tb");
+    }
+}

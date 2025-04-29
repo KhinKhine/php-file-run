@@ -1,0 +1,177 @@
+.footer {
+    color: var(--clr-main-white);
+    background-color: var(--clr-main-black);
+    padding: vw(16, "pc") vw(120, "pc");
+
+    @include mq(md, max) {
+        padding: vw(40, "tb") vw(40, "tb") vw(24, "tb");
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include mq(md, max) {
+            flex-direction: column;
+            gap: vw(24, "tb");
+        }
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: vw(40, "pc");
+
+        @include mq(md, max) {
+            gap: vw(24, "tb");
+            flex-direction: column;
+        }
+    }
+
+    &__logo {
+        max-width: vw(130, "pc");
+
+        transition: opacity 0.4s;
+
+        @include mq(md, max) {
+            max-width: vw(96.1, "tb");
+        }
+
+        &:hover {
+            opacity: 0.6;
+
+            @include mq(md, max) {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__menus {
+        display: flex;
+        align-items: center;
+        gap: vw(24, "pc");
+
+        @include mq(md, max) {
+            gap: vw(24, "tb");
+            flex-direction: column;
+        }
+    }
+
+    &__menus-inner {
+        display: flex;
+        align-items: center;
+        gap: vw(24, "pc");
+
+        @include mq(md, max) {
+            flex-direction: column;
+            gap: vw(24, "tb");
+        }
+
+        &.-pc {
+            display: flex;
+
+            @include mq(md, max) {
+                display: none;
+            }
+        }
+
+        &.-sp {
+            display: none;
+
+            @include mq(md, max) {
+                display: flex;
+            }
+        }
+
+        a {
+            font-size: vw(12, "pc");
+            font-style: normal;
+            font-weight: 500;
+            // line-height: 180%;
+            height: vw(22, "pc") !important;
+
+            @include mq(md, max) {
+                font-size: vw(12, "tb");
+                line-height: 180%;
+
+                height: vw(22, "tb") !important;
+            }
+
+            span {
+                height: vw(22, "pc");
+                line-height: vw(22, "pc");
+
+                @include mq(md, max) {
+                    height: vw(22, "tb");
+                    line-height: vw(22, "tb");
+                }
+
+                &.-icon {
+                    display: flex;
+                    align-items: center;
+                    gap: vw(4, "pc");
+
+                    @include mq(md, max) {
+                        gap: vw(4, "tb");
+                        line-height: unset;
+                    }
+                }
+            }
+
+            &.-icon {
+                display: flex;
+                align-items: center;
+                gap: vw(4, "pc");
+
+                @include mq(md, max) {
+                    gap: vw(4, "tb");
+                    line-height: unset;
+                }
+            }
+
+            &.-home {
+                width: vw(36, "pc");
+
+                @include mq(md, max) {
+                    width: vw(36, "tb");
+                }
+            }
+
+            &.-magazine {
+                width: vw(97, "pc");
+
+                @include mq(md, max) {
+                    width: vw(97, "tb");
+                }
+            }
+
+            &.-about {
+                width: vw(64, "pc");
+
+                @include mq(md, max) {
+                    width: vw(64, "tb");
+                }
+            }
+
+            &.-policy {
+                width: vw(136, "pc");
+
+                @include mq(md, max) {
+                    width: vw(136, "tb");
+                }
+            }
+        }
+    }
+
+    &__copyright {
+        font-size: vw(12, "pc");
+        font-style: normal;
+        font-weight: 500;
+        line-height: 180%;
+
+        @include mq(md, max) {
+            font-size: vw(12, "tb");
+        }
+    }
+}

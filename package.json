@@ -1,0 +1,45 @@
+{
+    "name": "wordpress-theme",
+    "version": "1.0.0",
+    "author": "",
+    "license": "ISC",
+    "main": "index.js",
+    "scripts": {
+        "start": "run-s delete watch",
+        "serve": "browser-sync --config browsersync.js start",
+        "watch": "run-p watch:scss watch:es watch:css watch:js watch:php serve",
+        "watch:scss": "chokidar \"src/scss/\" --command \"npm run build:css\" --initial",
+        "watch:es": "chokidar \"src/js/\" --command \"npm run build:js\" --initial",
+        "watch:css": "chokidar 'assets/css/style.css' -c 'browser-sync reload'",
+        "watch:js": "chokidar 'assets/js/script.js' -c 'browser-sync reload'",
+        "watch:php": "chokidar '**/*.php' -c 'browser-sync reload'",
+        "build:js": "npx swc src/js -d assets/ -s --strip-leading-paths",
+        "build:css": "run-s build:scss build:postcss",
+        "build:scss": "sass src/scss/:assets/css/ --style=expanded --source-map-urls=relative",
+        "build:postcss": "postcss assets/css/*.css -d assets/css/",
+        "delete": "run-p delete:css delete:js",
+        "delete:css": "rimraf assets/css",
+        "delete:js": "rimraf assets/js"
+    },
+    "keywords": [],
+    "description": "",
+    "devDependencies": {
+        "@swc/cli": "^0.4.0",
+        "@swc/core": "^1.7.21",
+        "autoprefixer": "^10.4.20",
+        "browser-sync": "^3.0.2",
+        "chokidar-cli": "^3.0.0",
+        "cssnano": "^7.0.6",
+        "dotenv-cli": "^7.4.2",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.41",
+        "postcss-cli": "^11.0.0",
+        "rimraf": "^6.0.1",
+        "sass": "^1.77.8"
+    },
+    "dependencies": {
+        "gsap": "^3.12.5",
+        "gsap-trial": "^3.12.5",
+        "swiper": "^11.1.12"
+    }
+}
