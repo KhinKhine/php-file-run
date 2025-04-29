@@ -1,0 +1,60 @@
+# bug_report.yml
+name: 不具合報告
+description: Bug report
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: overview
+    attributes:
+      label: 概要
+      description: どのような課題か経緯や前提を記載。必要に応じて画像及び動画等エビデンスを添付すること。
+    validations:
+      required: true
+  - type: textarea
+    id: process
+    attributes:
+      label: 再現手順
+      description: 不具合を再現させる手順を記載。
+      value: |
+        1. 
+        2. 
+        3. 
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 再現環境
+      description: 再現環境を記載。例：Safari + macOS、検証環境
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 期待動作
+      description: 期待すべき動作を記載。
+    validations:
+      required: true
+  - type: textarea
+    id: cause
+    attributes:
+      label: 想定される原因
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 修正案
+  - type: textarea
+    id: note
+    attributes:
+      label: 対応にあたっての注意点
+  - type: textarea
+    id: logs
+    attributes:
+      label: ログ
+      description: 関連するログをペースト。
+      render: shell
+  - type: textarea
+    id: supplement
+    attributes:
+      label: 補足

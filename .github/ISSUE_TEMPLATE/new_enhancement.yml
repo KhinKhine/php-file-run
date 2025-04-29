@@ -1,0 +1,41 @@
+# new_enhancement.yml
+name: 機能拡張
+description: New feature
+title: "[Enhancement]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: どのような課題か経緯や前提を記載。必要に応じて画像及び動画等エビデンスを添付すること。
+    validations:
+      required: true
+  - type: textarea
+    id: merit
+    attributes:
+      label: メリット
+      description: 改善によるメリットを記載。
+    validations:
+      required: true
+  - type: textarea
+    id: do
+    attributes:
+      label: 対応すべき作業
+      description: このissueで取り組むことを記載。
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: 対応にあたっての注意点
+  - type: textarea
+    id: logs
+    attributes:
+      label: ログ
+      description: 関連するログをペースト。
+      render: shell
+  - type: textarea
+    id: supplement
+    attributes:
+      label: 補足
